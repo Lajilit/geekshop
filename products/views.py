@@ -1,4 +1,10 @@
+import json
+import os
+
 from django.shortcuts import render
+
+MODULE_DIR = os.path.dirname(__file__)
+
 
 # Create your views here.
 def index(request):
@@ -7,71 +13,14 @@ def index(request):
     }
     return render(request, 'products/index.html', context)
 
-def products(request):
-    categories = [
-        {
-            'name': 'Новинки',
-            'link': '#'
-        },
-        {
-            'name': 'Обувь',
-            'link': '#'
-        },
-        {
-            'name': 'Одежда',
-            'link': '#'
-        },
-        {
-            'name': 'Аксессуары',
-            'link': '#'
-        },
-        {
-            'name': 'Подарки',
-            'link': '#'
-        }
-    ]
-    products = [
-        {
-            'image': 'vendor/img/products/Adidas-hoodie.png',
-            'name': 'Худи черного цвета с монограммами adidas Originals',
-            'price': 6090.00,
-            'description': 'Мягкая ткань для свитшотов. Стиль и комфорт – это образ жизни.'
-        },
-        {
-            'image': 'vendor/img/products/Blue-jacket-The-North-Face.png',
-            'name': 'Синяя куртка The North Face',
-            'price': 23725.00,
-            'description': 'Гладкая ткань. Водонепроницаемое покрытие. Легкий и теплый пуховый наполнитель.'
-        },
-        {
-            'image': 'vendor/img/products/Brown-sports-oversized-top-ASOS-DESIGN.png',
-            'name': 'Коричневый спортивный oversized-топ ASOS DESIGN',
-            'price': 3390.00,
-            'description': 'Материал с плюшевой текстурой. Удобный и мягкий.'
-        },
-        {
-            'image': 'vendor/img/products/Black-Nike-Heritage-backpack.png',
-            'name': 'Черный рюкзак Nike Heritage',
-            'price': 2340.00,
-            'description': 'Плотная ткань. Легкий материал.'
-        },
-        {
-            'image': 'vendor/img/products/Black-Dr-Martens-shoes.png',
-            'name': 'Черные туфли на платформе с 3 парами люверсов Dr Martens 1461 Bex',
-            'price': 13590.00,
-            'description': 'Гладкий кожаный верх. Натуральный материал.'
-        },
-        {
-            'image': 'vendor/img/products/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png',
-            'name': 'Темно-синие широкие строгие брюки ASOS DESIGN',
-            'price': 2890.00,
-            'description': 'Легкая эластичная ткань сирсакер Фактурная ткань.'
-        },
-    ]
-    context = {
-        'title': 'товары',
-        'products': products,
-        'categories': categories
-    }
-    return render(request, 'products/products.html', context)
 
+def products(request):
+    context = {'title': 'товары'}
+
+    file_path_p = os.path.join(MODULE_DIR, 'fixtures/products.json')
+    context['products'] = json.load(open(file_path_p, encoding='utf-8'))
+
+    file_path_c = os.path.join(MODULE_DIR, 'fixtures/categories.json')
+    context['categories'] = json.load(open(file_path_c, encoding='utf-8'))
+
+    return render(request, 'products/products.html', context)
