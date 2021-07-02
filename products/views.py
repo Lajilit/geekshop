@@ -6,7 +6,6 @@ from django.shortcuts import render
 MODULE_DIR = os.path.dirname(__file__)
 
 
-# Create your views here.
 def index(request):
     context = {
         'title': 'GeekShop',
