@@ -8,6 +8,28 @@ def index(request):
     return render(request, 'products/index.html', context)
 
 def products(request):
+    categories = [
+        {
+            'name': 'Новинки',
+            'link': '#'
+        },
+        {
+            'name': 'Обувь',
+            'link': '#'
+        },
+        {
+            'name': 'Одежда',
+            'link': '#'
+        },
+        {
+            'name': 'Аксессуары',
+            'link': '#'
+        },
+        {
+            'name': 'Подарки',
+            'link': '#'
+        }
+    ]
     products = [
         {
             'image': 'vendor/img/products/Adidas-hoodie.png',
@@ -48,7 +70,8 @@ def products(request):
     ]
     context = {
         'title': 'товары',
-        'products': products
+        'products': products,
+        'categories': categories
     }
     return render(request, 'products/products.html', context)
 
