@@ -1,22 +1,42 @@
 [
   {
-    "name": "Новинки",
-    "link": "#"
+    "model": "products.productcategory",
+    "pk": 1,
+    "fields": {
+      "name": "Одежда",
+      "description": "Описание для класса одежды"
+    }
   },
   {
-    "name": "Обувь",
-    "link": "#"
+    "model": "products.productcategory",
+    "pk": 2,
+    "fields": {
+      "name": "Новинки",
+      "description": null
+    }
   },
   {
-    "name": "Одежда",
-    "link": "#"
+    "model": "products.productcategory",
+    "pk": 3,
+    "fields": {
+      "name": "Обувь",
+      "description": null
+    }
   },
   {
-    "name": "Аксессуары",
-    "link": "#"
+    "model": "products.productcategory",
+    "pk": 4,
+    "fields": {
+      "name": "Аксессуары",
+      "description": ""
+    }
   },
   {
-    "name": "Подарки",
-    "link": "#"
+    "model": "products.productcategory",
+    "pk": 5,
+    "fields": {
+      "name": "Подарки",
+      "description": ""
+    }
   }
 ]
