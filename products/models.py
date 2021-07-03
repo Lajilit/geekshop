@@ -43,7 +43,7 @@ class Product(models.Model):
         verbose_name='цена',
     )
     quantity = models.PositiveIntegerField(
-        default=2,
+        default=0,
         verbose_name='количество',
     )
     category = models.ForeignKey(
@@ -51,6 +51,9 @@ class Product(models.Model):
         on_delete=models.CASCADE,
         verbose_name='категория',
     )
+
+    def __str__(self):
+        return f'{self.name} ({self.category.name})'
 
     class Meta():
         verbose_name = 'товар'
